@@ -7,7 +7,7 @@ function chillHop() {
             artist: "Plusma, Guillaume Muschalle",
             cover: "https://chillhop.com/wp-content/uploads/2022/05/d8344de22563af8eaec8f544c14711592eabef26-1024x1024.jpg",
             id: uuidv4(),
-            active: false,
+            active: true,
             color: ["#A3835C", "#7BBAB7"],
             audio: "https://mp3.chillhop.com/serve.php/?mp3=28895"
         },
