@@ -1,9 +1,18 @@
 import React from "react";
 
-const LibrarySong = ({ song, songs, setCurrentSong, id }) => {
+const LibrarySong = ({ song, songs, setCurrentSong, id, audioRef, isPlaying }) => {
     // Handlers
     const songSelectHandler = () => {
         setCurrentSong(song);
+        // check if song is playing, also I need to spend more time on Promise to understand it better
+        if (isPlaying) {
+            const playPromise = audioRef.current.play();
+            if (playPromise !== undefined) {
+                playPromise.then((audio) => {
+                    audioRef.current.play();
+                });
+            }
+        }
     }
     return (
         <div onClick={songSelectHandler} className="library-song">
