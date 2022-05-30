@@ -17,6 +17,7 @@ const LibrarySong = ({ song, songs, setCurrentSong, id, audioRef, isPlaying, set
                 }
             }
         });
+        // found people online saying that this solution is actually better, since backend wont add labels such as active, and its a better approach to have front end just match ID's, than to rely on backend. className={`library-song ${song.id === currentSong.id ? "selected" : ""} `}
         setSongs(newSongs);
         // check if song is playing, also I need to spend more time on Promise to understand it better
         if (isPlaying) {
