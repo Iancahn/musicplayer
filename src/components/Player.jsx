@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
+import { playAudio } from "../util";
 
 function Player({ currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setSongInfo, songs, setCurrentSong, setSongs }) {
     //UseEffect
@@ -53,6 +54,7 @@ function Player({ currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setS
             }
             setCurrentSong(songs[(currentIndex - 1 % songs.length)]);
         };
+        playAudio(isPlaying, audioRef);
     };
 
 

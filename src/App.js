@@ -6,9 +6,10 @@ import Player from "./components/Player";
 import Song from "./components/Song";
 import Library from "./components/Library";
 import Nav from "./components/Nav";
-
+// Import Data
+import data from "./data";
 // Import Util
-import data from "./util";
+import util from "./util";
 
 
 function App() {
