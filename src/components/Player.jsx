@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 
 function Player({ currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setSongInfo, songs, setCurrentSong, setSongs }) {
-    //UseEffect
-    useEffect(() => {
-        // Add Active State
+    const activeLibraryHandler = () => {
         const newSongs = songs.map((song) => {
             if (song.id === currentSong.id) {
                 return {
@@ -15,12 +13,11 @@ function Player({ currentSong, isPlaying, setIsPlaying, audioRef, songInfo, setS
                 return {
                     ...song,
                     active: false,
-                }
+                };
             }
-        }, [currentSong]);
-        // found people online saying that this solution is actually better, since backend wont add labels such as active, and its a better approach to have front end just match ID's, than to rely on backend. className={`library-song ${song.id === currentSong.id ? "selected" : ""} `}
+        });
         setSongs(newSongs);
-    })
+    }
     // Event Handlers
     const playSongHandler = () => {
         if (isPlaying) {
