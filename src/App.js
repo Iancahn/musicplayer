@@ -8,8 +8,6 @@ import Library from "./components/Library";
 import Nav from "./components/Nav";
 // Import Data
 import data from "./data";
-// Import Util
-import util from "./util";
 
 
 function App() {
@@ -38,7 +36,13 @@ function App() {
     setSongInfo({ ...songInfo, currentTime: current, duration, animationPercentage: animation });
     // set Volume
     // audioRef.current.volume(50 %)
+
   }
+  const songEndHandler = async () => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    if (isPlaying) audioRef.current.play();
+  };
 
   return (
     <div className="App">
@@ -46,7 +50,7 @@ function App() {
       <Song currentSong={currentSong} />
       <Player setSongs={setSongs} setCurrentSong={setCurrentSong} songs={songs} songInfo={songInfo} setSongInfo={setSongInfo} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong} />
       <Library libraryStatus={libraryStatus} isPlaying={isPlaying} songs={songs} setCurrentSong={setCurrentSong} audioRef={audioRef} setSongs={setSongs} />
-      <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
+      <audio onEnded={songEndHandler} onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
     </div>
   );
 }
