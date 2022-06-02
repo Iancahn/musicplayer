@@ -31,7 +31,13 @@ function App() {
     const duration = e.target.duration;
     //Calculate Percentage
     const roundedCurrent = Math.round(current);
-    setSongInfo({ ...songInfo, currentTime: current, duration });
+    const roundedDuration = Math.round(duration);
+    const animation = Math.round((roundedCurrent / roundedDuration * 100));
+    console.log(animation);
+
+    setSongInfo({ ...songInfo, currentTime: current, duration, animationPercentage: animation });
+    // set Volume
+    // audioRef.current.volume(50 %)
   }
 
   return (
